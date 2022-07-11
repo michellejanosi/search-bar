@@ -1,7 +1,17 @@
-const usernameInput = document.getElementById('usernameInput');
+const searchInput = document.getElementById('searchInput');
+let allNamesDOMCollection = document.getElementsByClassName('name');
 
-usernameInput.addEventListener('keyup', function (e) {
+searchInput.addEventListener('keyup', function (e) {
   e.preventDefault;
-  let username = e.target.value.toLowerCase();
-  console.log(username);
+  let searchQuery = e.target.value.toLowerCase();
+
+  for (let i = 0; i < allNamesDOMCollection.length; i++) {
+    const currentName = allNamesDOMCollection[i].textContent.toLowerCase();
+
+    if (currentName.includes(searchQuery)) {
+      allNamesDOMCollection[i].style.display = 'block';
+    } else {
+      allNamesDOMCollection[i].style.display = 'none';
+    }
+  }
 });
